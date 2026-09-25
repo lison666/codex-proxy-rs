@@ -138,6 +138,7 @@ export function useAccountOnboarding(options: {
     reauthorizingAccount.value = account
     createForm.value = { ...emptyAccountCreateForm(), source: { kind: 'provider', id: account.provider }, step: 'import' }
     showCreateModal.value = true
+    void handleAuthorizeOAuth()
   }
 
   async function finishCreate(message: string) {
@@ -172,7 +173,6 @@ export function useAccountOnboarding(options: {
     authorizingOAuth: authorization.busy,
     authorization: authorization.view,
     authorizationCallback: authorization.callback,
-    resetAuthorization: authorization.reset,
     createForm,
     handleCreate,
     handleAuthorizeOAuth,
